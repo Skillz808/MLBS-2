@@ -59,7 +59,7 @@ public class TestPlayerController : MonoBehaviour
         return Physics2D.OverlapArea(topLeftPoint, bottomRightPoint, ground);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
         if (!IsGrounded()) animator.SetBool("Jump", true);

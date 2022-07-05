@@ -6,9 +6,16 @@ public class CameraFollow : MonoBehaviour{
     public GameObject followObject;
     public Vector2 followOffset;
     public Vector3 playerOffset;
+    public float minPosition, maxPosition;
     public float speed = 3f;
     private Vector2 threshold;
     private Rigidbody2D rb;
+    public bool doVertical = true;
+
+    private void Awake()
+    {
+        if (doVertical == false) followOffset.y = -1000f;
+    }
 
     // Start is called before the first frame update
     void Start(){
@@ -17,7 +24,7 @@ public class CameraFollow : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
+    void LateUpdate(){
         Vector2 follow = followObject.transform.position + playerOffset;
         float xDifference = Vector2.Distance(Vector2.right * transform.position.x, Vector2.right * follow.x);
         float yDifference = Vector2.Distance(Vector2.up * transform.position.y, Vector2.up * follow.y);
@@ -29,6 +36,10 @@ public class CameraFollow : MonoBehaviour{
         if(Mathf.Abs(yDifference) >= threshold.y){
             newPosition.y = follow.y;
         }
+
+        if (newPosition.x < minPosition) newPosition.x = minPosition;
+        if (newPosition.x > maxPosition) newPosition.x = maxPosition;
+
         float moveSpeed = rb.velocity.magnitude > speed ? rb.velocity.magnitude : speed;
         transform.position = Vector3.MoveTowards(transform.position, newPosition, moveSpeed * Time.deltaTime);
     }
