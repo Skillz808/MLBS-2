@@ -458,6 +458,9 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
+  currentBro: Mario
+  otherBro: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!4 &452964055
 Transform:
   m_ObjectHideFlags: 0
@@ -876,6 +879,38 @@ MonoBehaviour:
   maxPosition: 15.66
   speed: 3
   doVertical: 0
+--- !u!1 &904493670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904493671}
+  m_Layer: 0
+  m_Name: PlayerLuigi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &904493671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904493670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.4889503, y: 8.4156275, z: 4.8535547}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1152613902}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &958786844
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +1005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072806100}
   m_Layer: 0
-  m_Name: MarioStuff
+  m_Name: PlayerMario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -990,7 +1025,6 @@ Transform:
   m_Children:
   - {fileID: 680752630}
   - {fileID: 452964055}
-  - {fileID: 1152613902}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1010,7 +1044,7 @@ GameObject:
   - component: {fileID: 1152613904}
   - component: {fileID: 1152613903}
   m_Layer: 0
-  m_Name: LuigiTest
+  m_Name: Luigi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,11 +1058,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152613901}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.481, y: -1.031, z: -0.19472967}
+  m_LocalPosition: {x: 1.9636211, y: -6.714601, z: -4.8535547}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1072806100}
+  m_Father: {fileID: 904493671}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1152613903
@@ -1211,6 +1245,9 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
+  currentBro: Luigi
+  otherBro: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!212 &1152613908
 SpriteRenderer:
   m_ObjectHideFlags: 0

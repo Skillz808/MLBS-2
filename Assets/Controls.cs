@@ -37,9 +37,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""MarioJump"",
                     ""type"": ""Button"",
                     ""id"": ""9a6bef05-e7ca-4e4b-b1ac-da17f7fa0758"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LuigiJump"",
+                    ""type"": ""Button"",
+                    ""id"": ""310aa49c-d587-43b3-901a-932f247b9076"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -116,11 +125,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5b5710c6-9817-4308-bcf8-9ef3028d31e4"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""MarioJump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -131,7 +140,29 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""MarioJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""684540bf-1a61-4066-82ba-1b14b68f4f02"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LuigiJump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43508a85-5467-4f55-82e4-4af1a15730d7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LuigiJump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -143,7 +174,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // Player2D
         m_Player2D = asset.FindActionMap("Player2D", throwIfNotFound: true);
         m_Player2D_Move = m_Player2D.FindAction("Move", throwIfNotFound: true);
-        m_Player2D_Jump = m_Player2D.FindAction("Jump", throwIfNotFound: true);
+        m_Player2D_MarioJump = m_Player2D.FindAction("MarioJump", throwIfNotFound: true);
+        m_Player2D_LuigiJump = m_Player2D.FindAction("LuigiJump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,13 +236,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player2D;
     private IPlayer2DActions m_Player2DActionsCallbackInterface;
     private readonly InputAction m_Player2D_Move;
-    private readonly InputAction m_Player2D_Jump;
+    private readonly InputAction m_Player2D_MarioJump;
+    private readonly InputAction m_Player2D_LuigiJump;
     public struct Player2DActions
     {
         private @Controls m_Wrapper;
         public Player2DActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player2D_Move;
-        public InputAction @Jump => m_Wrapper.m_Player2D_Jump;
+        public InputAction @MarioJump => m_Wrapper.m_Player2D_MarioJump;
+        public InputAction @LuigiJump => m_Wrapper.m_Player2D_LuigiJump;
         public InputActionMap Get() { return m_Wrapper.m_Player2D; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -223,9 +257,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_Player2DActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_Player2DActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_Player2DActionsCallbackInterface.OnJump;
+                @MarioJump.started -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMarioJump;
+                @MarioJump.performed -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMarioJump;
+                @MarioJump.canceled -= m_Wrapper.m_Player2DActionsCallbackInterface.OnMarioJump;
+                @LuigiJump.started -= m_Wrapper.m_Player2DActionsCallbackInterface.OnLuigiJump;
+                @LuigiJump.performed -= m_Wrapper.m_Player2DActionsCallbackInterface.OnLuigiJump;
+                @LuigiJump.canceled -= m_Wrapper.m_Player2DActionsCallbackInterface.OnLuigiJump;
             }
             m_Wrapper.m_Player2DActionsCallbackInterface = instance;
             if (instance != null)
@@ -233,9 +270,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @MarioJump.started += instance.OnMarioJump;
+                @MarioJump.performed += instance.OnMarioJump;
+                @MarioJump.canceled += instance.OnMarioJump;
+                @LuigiJump.started += instance.OnLuigiJump;
+                @LuigiJump.performed += instance.OnLuigiJump;
+                @LuigiJump.canceled += instance.OnLuigiJump;
             }
         }
     }
@@ -243,6 +283,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface IPlayer2DActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnMarioJump(InputAction.CallbackContext context);
+        void OnLuigiJump(InputAction.CallbackContext context);
     }
 }

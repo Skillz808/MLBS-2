@@ -15,9 +15,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "MarioJump",
                     "type": "Button",
                     "id": "9a6bef05-e7ca-4e4b-b1ac-da17f7fa0758",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LuigiJump",
+                    "type": "Button",
+                    "id": "310aa49c-d587-43b3-901a-932f247b9076",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -94,11 +103,11 @@
                 {
                     "name": "",
                     "id": "5b5710c6-9817-4308-bcf8-9ef3028d31e4",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "MarioJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,7 +118,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "MarioJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "684540bf-1a61-4066-82ba-1b14b68f4f02",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LuigiJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43508a85-5467-4f55-82e4-4af1a15730d7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LuigiJump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

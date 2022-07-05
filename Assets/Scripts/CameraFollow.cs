@@ -54,5 +54,16 @@ public class CameraFollow : MonoBehaviour{
         Gizmos.color = Color.blue;
         Vector2 border = calculateThreshold();
         Gizmos.DrawWireCube(transform.position, new Vector3(border.x * 2, border.y * 2, 1));
+
+    }
+    public void swapBro()
+    {
+        Vector3 snapToBro;
+        snapToBro.x = followObject.transform.position.x;
+        snapToBro.y = transform.position.y;
+        snapToBro.z = transform.position.z;
+        if (snapToBro.x < minPosition) snapToBro.x = minPosition;
+        if (snapToBro.x > maxPosition) snapToBro.x = maxPosition;
+        transform.position = snapToBro;
     }
 }
